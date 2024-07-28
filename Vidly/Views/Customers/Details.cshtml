@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> @Model.Name Details</h2>
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Birthdate
+            </th>
+            <th>
+                Is Subscribed to Newsletter
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.Name
+            </td>
+            <td>
+                @Model.Birthdate
+            </td>
+            <td>
+                @Model.IsSubscribedToNewsLetter
+            </td>
+            
+        </tr>        
+    </tbody>
+</table>
