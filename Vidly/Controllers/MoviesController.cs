@@ -65,9 +65,9 @@ namespace Vidly.Controllers
 
         public ActionResult Index()
         {
-            var movies = _context.Movies.Include(m=> m.Genre).ToList();
+        //    var movies = _context.Movies.Include(m=> m.Genre).ToList();
             
-            return View(movies);
+            return View();
         }
 
         [HttpPost]
@@ -105,7 +105,7 @@ namespace Vidly.Controllers
             {
                 _context.SaveChanges();
             }
-            catch (DbEntityValidationException e)
+            catch (DbUpdateException e)
             {
                 Console.WriteLine(e);
             }

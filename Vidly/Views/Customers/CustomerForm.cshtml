@@ -1,0 +1,43 @@
+﻿@model Vidly.ViewModel.NewCustomerFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>New Customer</h1>
+
+
+@using (@Html.BeginForm("Save", "Customers"))
+{       @Html.ValidationSummary(true, "Please Fix the following errors")
+        @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class="form-control"})
+        @Html.ValidationMessageFor(m => m.Customer.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.MemberShipTypeId)
+        @Html.DropDownListFor(m => m.Customer.MemberShipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select MemberShip Type", new { @class = "form-control " })
+        @Html.ValidationMessageFor(m => m.Customer.MemberShipTypeId)
+    </div>
+    <div class="form-group"> 
+        @Html.LabelFor(m => m.Customer.Birthdate)
+        @Html.TextBoxFor(m => m.Customer.Birthdate,  new { @class = "form-control" })
+    </div>
+    
+    
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsLetter) Subscribed to newsletter??
+        </label>
+    </div>
+    @Html.HiddenFor(m => m.Customer.Id)
+    <button type="submit" class="btn btn-primary">
+        save
+    </button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
